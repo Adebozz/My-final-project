@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skin Cancer Classifier</title>
+</head>
+<body>
+    <h1>Skin Cancer Classifier</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept=".jpg, .jpeg, .png">
+        <input type="submit" value="Upload">
+    </form>
+    <br>
+    {% if image %}
+        <h2>Uploaded Image:</h2>
+        <img src="{{ url_for('static', filename='uploads/' + image) }}" width="300" height="300">
+        <h2>Predicted Label: {{ predicted_label }}</h2>
+    {% endif %}
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
